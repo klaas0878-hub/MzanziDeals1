@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101510">
+<title>Mzansi Deals ZA</title>
+<style>
+:root{--bg:#0d120f;--panel:#171f19;--panel2:#202b22;--gold:#f2c14e;--green:#62c58b;--muted:#aab5aa;--white:#f7f8f4;--line:#2b382e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:5;background:#101710ed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.wrap{max-width:1120px;margin:auto;padding:0 18px}
+.top{height:70px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.4px;font-size:19px}.logo{width:39px;height:39px;border-radius:12px;background:linear-gradient(135deg,var(--gold),#d89a20);color:#172016;display:grid;place-items:center;font-weight:1000}
+.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:2px;margin-top:-4px}
+nav{display:flex;gap:7px;flex-wrap:wrap}nav button,.ghost{background:transparent;border:1px solid var(--line);color:var(--white);padding:9px 13px;border-radius:10px}
+nav button.active,nav button:hover{border-color:var(--gold);color:var(--gold)}
+.hero{padding:42px 0 28px;background:radial-gradient(ellipse at 85% 20%,#30472d 0,transparent 38%),linear-gradient(120deg,#142019,#101510)}
+.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:25px;align-items:center}
+.eyebrow{color:var(--green);font-weight:800;letter-spacing:2px;font-size:12px;text-transform:uppercase}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.04;margin:12px 0}.gold{color:var(--gold)}
+.hero p{color:#c4cec4;max-width:560px}
+.cta{display:inline-block;border:0;border-radius:11px;padding:12px 17px;background:var(--gold);color:#172016;font-weight:850;margin:8px 8px 0 0}
+.cta.secondary{background:var(--green)}
+.hero-card{background:#1c2a20;border:1px solid #42513e;border-radius:18px;padding:22px;transform:rotate(1deg)}
+.hero-card strong{font-size:32px;color:var(--gold);display:block}.hero-card span{color:#c5d0c4}
+main{padding:26px 0 70px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:15px 0}
+h2{margin:0;font-size:24px}.muted{color:var(--muted)}
+.searchrow{display:flex;gap:10px;margin:18px 0}.searchrow input{flex:1}
+input,select,textarea{width:100%;background:#111913;border:1px solid var(--line);border-radius:10px;padding:12px;color:var(--white);outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+.categories{display:flex;gap:8px;overflow:auto;padding:3px 0 16px}
+.chip{white-space:nowrap;background:var(--panel);border:1px solid var(--line);color:var(--muted);padding:8px 13px;border-radius:999px}
+.chip.active{background:#3a321d;color:var(--gold);border-color:#8c702c}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.product-art{height:145px;display:grid;place-items:center;background:linear-gradient(135deg,#293b2c,#1a251d);font-size:54px;position:relative}
+.badge{position:absolute;top:12px;left:12px;background:var(--gold);color:#171c14;border-radius:6px;padding:4px 8px;font-size:10px;font-weight:900;text-transform:uppercase}
+.cardbody{padding:14px}.cardbody h3{margin:0 0 5px;font-size:17px}.price{font-size:21px;color:var(--gold);font-weight:900}.seller{font-size:12px;color:var(--muted);margin:5px 0 12px}
+.card-actions{display:flex;gap:8px}.card-actions a,.card-actions button{flex:1;text-align:center;text-decoration:none;padding:9px 7px;border-radius:9px;font-weight:750;font-size:12px}
+.whatsapp{background:var(--green);color:#102016;border:0}.details{background:transparent;color:var(--white);border:1px solid var(--line)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:20px;margin:20px 0}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field label{display:block;color:var(--muted);font-size:12px;margin:0 0 6px}.field.full{grid-column:1/-1}
+.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:15px}
+.package{border:1px solid var(--line);background:#111913;border-radius:13px;padding:16px}.package.featured{border-color:var(--gold)}
+.package h3{margin:0}.package strong{font-size:26px;color:var(--gold)}.package p{font-size:12px;color:var(--muted);min-height:38px}
+.notice{border-left:3px solid var(--gold);padding:10px 13px;background:#272419;color:#e6dfc9;border-radius:0 8px 8px 0;font-size:12px;margin-top:15px}
+.hidden{display:none!important}.empty{padding:35px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px;grid-column:1/-1}
+footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:12px}
+.modal{position:fixed;inset:0;background:#000b;z-index:10;display:grid;place-items:center;padding:18px}.modalbox{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;max-width:420px;width:100%}
+@media(max-width:760px){.hero-grid{grid-template-columns:1fr}.hero-card{display:none}.grid{grid-template-columns:repeat(2,1fr)}nav{gap:4px}nav button{padding:8px;font-size:12px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+@media(max-width:460px){.grid{grid-template-columns:1fr 1fr;gap:9px}.product-art{height:110px;font-size:42px}.cardbody{padding:10px}.cardbody h3{font-size:14px}.price{font-size:17px}.card-actions{flex-direction:column}.brand{font-size:16px}.top{height:auto;min-height:68px;align-items:flex-start;padding-top:12px;padding-bottom:10px;flex-direction:column}}
+</style>
+</head>
+<body>
+<header><div class="wrap top">
+ <div class="brand"><div class="logo">MD</div><div>MZANSI DEALS<small>GOOD FINDS. LOCAL FINDS.</small></div></div>
+ <nav><button class="active" data-page="home">Discover</button><button data-page="affiliate">Affiliate deals</button><button data-page="advertise">Advertise</button><button data-page="sell">List a product</button></nav>
+</div></header>
+<section class="hero"><div class="wrap hero-grid">
+ <div><div class="eyebrow">Proudly South African 🇿🇦</div><h1>Find your next<br><span class="gold">great deal.</span></h1>
+ <p>Discover products from local businesses and independent sellers. Browse deals, compare prices and contact sellers directly.</p>
+ <button class="cta" onclick="showPage('home')">Explore deals</button><button class="cta secondary" onclick="showPage('advertise')">Promote your business</button></div>
+ <div class="hero-card"><div class="eyebrow">Made for Mzansi</div><strong>Rands. Deals. Local.</strong><span>One place to discover what's being sold around South Africa.</span></div>
+</div></section>
+<main class="wrap">
+<section id="homePage">
+ <div class="section-head"><div><div class="eyebrow">The marketplace</div><h2>Latest deals</h2></div><span class="muted" id="listingCount"></span></div>
+ <div class="searchrow"><input id="search" placeholder="Search phones, fashion, homeware..." aria-label="Search products"><button class="ghost" onclick="clearSearch()">Clear</button></div>
+ <div class="categories" id="categories"></div>
+ <div class="grid" id="products"></div>
+</section>
+
+<section id="affiliatePage" class="hidden">
+ <div class="eyebrow">Shop smart · Support the platform</div><h2>Affiliate deals</h2>
+ <p class="muted">Browse products linked to participating shops. When an approved affiliate link is used and a qualifying purchase is made, Mzansi Deals may earn a commission at no extra cost to the shopper.</p>
+ <div class="notice">Affiliate disclosure: Some buttons below may use affiliate links. Prices, stock and delivery are controlled by the retailer. Always check the final price on the retailer's website.</div>
+ <div class="section-head"><div><h2>Featured finds</h2></div><span class="muted" id="affiliateCount"></span></div>
+ <div class="grid" id="affiliateProducts"></div>
+ <div class="panel">
+  <h3>Add an affiliate product</h3>
+  <p class="muted">Paste your own approved tracking link from an affiliate programme. A normal product URL does not earn commission.</p>
+  <form id="affiliateForm" class="formgrid">
+   <div class="field"><label>Product name</label><input required name="title" placeholder="e.g. Portable Bluetooth speaker"></div>
+   <div class="field"><label>Price (ZAR, optional)</label><input name="price" type="number" min="0" step="0.01" placeholder="299"></div>
+   <div class="field"><label>Category</label><select name="category"><option>Electronics</option><option>Fashion</option><option>Home</option><option>Beauty</option><option>Other</option></select></div>
+   <div class="field"><label>Emoji / image placeholder</label><input name="emoji" maxlength="4" placeholder="🛍️"></div>
+   <div class="field full"><label>Your approved affiliate tracking link</label><input required name="url" type="url" placeholder="https://..."></div>
+   <div class="field full"><button class="cta" type="submit">Add affiliate deal</button></div>
+  </form>
+  <div class="notice">Prototype note: deals are saved only in this browser on this phone. This does not connect to Temu, verify links, track commissions or publish deals to other users.</div>
+ </div>
+</section>
+
+<section id="advertisePage" class="hidden">
+ <div class="eyebrow">Grow your reach</div><h2>Advertise on Mzansi Deals</h2><p class="muted">Put your product in front of people looking for local deals.</p>
+ <div class="packages">
+  <div class="package"><h3>Starter</h3><strong>R30</strong><p>7-day standard listing promotion.</p><button class="cta" onclick="choosePackage('Starter',30)">Choose</button></div>
+  <div class="package featured"><div class="eyebrow">Popular</div><h3>Boost</h3><strong>R60</strong><p>14-day promotion with a featured badge.</p><button class="cta" onclick="choosePackage('Boost',60)">Choose</button></div>
+  <div class="package"><h3>Premium</h3><strong>R120</strong><p>30-day featured promotion.</p><button class="cta" onclick="choosePackage('Premium',120)">Choose</button></div>
+ </div>
+ <div class="panel"><h3>Request an advertising package</h3><form id="adForm" class="formgrid">
+  <div class="field"><label>Your name / business</label><input required name="name" placeholder="Business name"></div>
+  <div class="field"><label>WhatsApp number</label><input required name="phone" placeholder="e.g. 0821234567"></div>
+  <div class="field"><label>Email (optional)</label><input name="email" type="email" placeholder="you@example.com"></div>
+  <div class="field"><label>Package</label><select name="package" id="adPackage"><option>Starter - R30</option><option selected>Boost - R60</option><option>Premium - R120</option></select></div>
+  <div class="field full"><label>What would you like to advertise?</label><textarea name="message" rows="3" placeholder="Tell us about your product or service"></textarea></div>
+  <div class="field full"><button class="cta" type="submit">Send advertising enquiry</button></div>
+ </form><div class="notice">Demo stage: package selection does not charge you. Payment collection will be connected securely before real adverts are sold.</div></div>
+</section>
+<section id="sellPage" class="hidden">
+ <div class="eyebrow">Join the marketplace</div><h2>List a product</h2><p class="muted">Businesses and individuals can submit products for the marketplace.</p>
+ <div class="panel"><form id="sellForm" class="formgrid">
+  <div class="field"><label>Product name</label><input required name="title" placeholder="e.g. Wireless headphones"></div>
+  <div class="field"><label>Price (ZAR)</label><input required name="price" type="number" min="1" step="0.01" placeholder="499"></div>
+  <div class="field"><label>Category</label><select name="category"><option>Electronics</option><option>Fashion</option><option>Home</option><option>Beauty</option><option>Groceries</option><option>Services</option><option>Other</option></select></div>
+  <div class="field"><label>Seller / business name</label><input required name="seller" placeholder="Your shop name"></div>
+  <div class="field"><label>WhatsApp number</label><input required name="phone" placeholder="e.g. 0821234567"></div>
+  <div class="field"><label>Product emoji (quick image placeholder)</label><input name="emoji" maxlength="4" placeholder="📦"></div>
+  <div class="field full"><label>Description</label><textarea name="description" rows="3" placeholder="Describe the product, condition and collection/delivery details"></textarea></div>
+  <div class="field full"><button class="cta" type="submit">Add product to this demo</button></div>
+ </form><div class="notice">Listings are saved only in this browser on this device in this prototype. A live public marketplace needs a shared database, moderation and secure seller accounts.</div></div>
+</section>
+</main>
+<footer><div class="wrap">© <span id="year"></span> Mzansi Deals ZA · A South African marketplace concept.<br>Buy safely: verify sellers, inspect items where possible and never share banking PINs or one-time passwords.</div></footer>
+<div id="modal" class="modal hidden" onclick="if(event.target.id==='modal')closeModal()"><div class="modalbox"><h3 id="modalTitle">Product details</h3><p id="modalText" class="muted"></p><button class="cta" onclick="closeModal()">Close</button></div></div>
+<script>
+const defaults=[
+ {id:1,title:"Wireless Bluetooth Headphones",price:349,category:"Electronics",seller:"Kasi Tech Store",phone:"27821234567",emoji:"🎧",description:"Wireless headphones. Message seller for availability.",featured:true},
+ {id:2,title:"Everyday Sneakers",price:599,category:"Fashion",seller:"Streetwear Corner",phone:"27829876543",emoji:"👟",description:"Comfortable everyday sneakers. Sizes subject to availability.",featured:false},
+ {id:3,title:"Decorative Table Lamp",price:229,category:"Home",seller:"Home Finds SA",phone:"27821112233",emoji:"💡",description:"Modern table lamp for your room or desk.",featured:false},
+ {id:4,title:"Skincare Gift Set",price:180,category:"Beauty",seller:"Glow Basket",phone:"27824445566",emoji:"🧴",description:"Gift set. Ask seller for ingredients and product details.",featured:true},
+ {id:5,title:"Fresh Produce Box",price:150,category:"Groceries",seller:"Local Harvest",phone:"27827778899",emoji:"🥑",description:"Seasonal produce box. Confirm contents before ordering.",featured:false},
+ {id:6,title:"Study Desk",price:850,category:"Home",seller:"Affordable Living",phone:"27823334455",emoji:"🪑",description:"Compact desk for a study or home office.",featured:false}
+];
+let listings=JSON.parse(localStorage.getItem("mzansiListings")||"null")||defaults;
+let activeCategory="All";
+const cats=["All","Electronics","Fashion","Home","Beauty","Groceries","Services","Other"];
+let affiliateDeals=JSON.parse(localStorage.getItem("mzansiAffiliateDeals")||"[]");
+function save(){localStorage.setItem("mzansiListings",JSON.stringify(listings))}
+function saveAffiliate(){localStorage.setItem("mzansiAffiliateDeals",JSON.stringify(affiliateDeals))}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function renderCats(){document.getElementById("categories").innerHTML=cats.map(c=>`<button class="chip ${c===activeCategory?'active':''}" onclick="setCategory('${c}')">${c}</button>`).join("")}
+function render(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const found=listings.filter(p=>(activeCategory==="All"||p.category===activeCategory)&&[p.title,p.seller,p.category,p.description].join(" ").toLowerCase().includes(q));
+ document.getElementById("listingCount").textContent=found.length+" listings";
+ document.getElementById("products").innerHTML=found.length?found.map(p=>`<article class="card"><div class="product-art"><span>${esc(p.emoji||"📦")}</span>${p.featured?'<span class="badge">Featured</span>':''}</div><div class="cardbody"><h3>${esc(p.title)}</h3><div class="price">R${Number(p.price).toLocaleString("en-ZA",{maximumFractionDigits:2})}</div><div class="seller">${esc(p.seller)} · ${esc(p.category)}</div><div class="card-actions"><a class="whatsapp" target="_blank" rel="noopener" href="https://wa.me/${esc(p.phone)}?text=${encodeURIComponent('Hi, I saw '+p.title+' on Mzansi Deals. Is it available?')}">WhatsApp</a><button class="details" onclick="details(${p.id})">Details</button></div></div></article>`).join(""):'<div class="empty">No deals found. Try another search or category.</div>';
+}
+function setCategory(c){activeCategory=c;renderCats();render()}
+function clearSearch(){document.getElementById("search").value="";render()}
+document.getElementById("search").addEventListener("input",render);
+function renderAffiliate(){
+ const box=document.getElementById("affiliateProducts");
+ document.getElementById("affiliateCount").textContent=affiliateDeals.length+" deals";
+ box.innerHTML=affiliateDeals.length?affiliateDeals.map(p=>`<article class="card"><div class="product-art"><span>${esc(p.emoji||"🛍️")}</span><span class="badge">Affiliate</span></div><div class="cardbody"><h3>${esc(p.title)}</h3><div class="price">${p.price>0?"R"+Number(p.price).toLocaleString("en-ZA",{maximumFractionDigits:2}):"See retailer price"}</div><div class="seller">${esc(p.category)} · Retailer sets final price</div><div class="card-actions"><a class="whatsapp" href="${esc(p.url)}" target="_blank" rel="sponsored nofollow noopener">View deal</a><button class="details" onclick="removeAffiliate(${p.id})">Remove</button></div></div></article>`).join(""):'<div class="empty">No affiliate deals added yet. Add your first approved tracking link below.</div>';
+}
+function removeAffiliate(id){affiliateDeals=affiliateDeals.filter(p=>p.id!==id);saveAffiliate();renderAffiliate()}
+function showPage(page){["home","affiliate","advertise","sell"].forEach(p=>document.getElementById(p+"Page").classList.toggle("hidden",p!==page));document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));if(page==="affiliate")renderAffiliate();window.scrollTo({top:0,behavior:"smooth"})}
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+function details(id){const p=listings.find(x=>x.id===id);document.getElementById("modalTitle").textContent=p.title;document.getElementById("modalText").textContent=p.description+" Seller: "+p.seller+". Price: R"+p.price;document.getElementById("modal").classList.remove("hidden")}
+function closeModal(){document.getElementById("modal").classList.add("hidden")}
+function choosePackage(name,price){document.getElementById("adPackage").value=name+" - R"+price;document.getElementById("adForm").scrollIntoView({behavior:"smooth"})}
+document.getElementById("sellForm").addEventListener("submit",e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.target));const phone=d.phone.replace(/\D/g,"");if(phone.length<9){alert("Please enter a valid WhatsApp number.");return}listings.unshift({id:Date.now(),title:d.title,price:Number(d.price),category:d.category,seller:d.seller,phone:phone.startsWith("0")?"27"+phone.slice(1):phone,emoji:d.emoji||"📦",description:d.description||"Contact seller for details.",featured:false});save();e.target.reset();showPage("home");render();alert("Product added to this device's demo marketplace.")});
+document.getElementById("adForm").addEventListener("submit",e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.target));const msg=`Mzansi Deals advertising enquiry%0AName/business: ${encodeURIComponent(d.name)}%0AWhatsApp: ${encodeURIComponent(d.phone)}%0APackage: ${encodeURIComponent(d.package)}%0ADetails: ${encodeURIComponent(d.message||"Please contact me.")}`;alert("Demo enquiry prepared. To receive enquiries, add your official Mzansi Deals WhatsApp number in the app before launch.");});
+document.getElementById("affiliateForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const d=Object.fromEntries(new FormData(e.target));
+ let u;
+ try{u=new URL(d.url)}catch{alert("Please paste a valid affiliate URL.");return}
+ if(!["https:","http:"].includes(u.protocol)){alert("Please use a valid web link.");return}
+ affiliateDeals.unshift({id:Date.now(),title:d.title,price:Number(d.price)||0,category:d.category,emoji:d.emoji||"🛍️",url:u.href});
+ saveAffiliate();e.target.reset();renderAffiliate();alert("Affiliate deal saved on this phone.");
+});
+document.getElementById("year").textContent=new Date().getFullYear();
+renderCats();render();renderAffiliate();
+</script>
+</body></html>
